@@ -59,7 +59,7 @@ ROOT_URLCONF = 'todoapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'C:/Users/phamk/Desktop/Project/ToDoApp-BE/todo-fe/build')],
+        'DIRS': [os.path.join(BASE_DIR, 'D:/Project/ToDoApp/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,5 +135,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 STATICFILES_DIRS = [
     os.path.join(
-        BASE_DIR, 'C:/Users/phamk/Desktop/Project/ToDoApp-BE/todo-fe/build/static')
+        BASE_DIR, 'D:/Project/ToDoApp/build')
 ]
