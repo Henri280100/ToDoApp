@@ -56,7 +56,7 @@ function NoteListPage(props) {
             if (!completedNote) {
               return note.completed === completedNote;
             }
-            return note;
+            return true;
           })}
         />
       </div>
