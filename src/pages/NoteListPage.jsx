@@ -14,16 +14,6 @@ function NoteListPage() {
     return () => clearTimeout(timer);
   });
   
-  useEffect(() => {
-    getNotes();
-  }, []);
-
-  const getNotes = async () => {
-    let response = await fetch(`${BaseUrl}`);
-    let data = await response.json();
-    console.log(123, data);
-    setNotes(data);
-  };
   const clearResult = () => setNotes([]);
 
   return (
