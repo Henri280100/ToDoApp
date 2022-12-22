@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function Note({ note }) {
   const [isImportantNote, setIsImportantNote] = useState(false);
-  // const [completeNote, setCompleteNote] = use
 
   const getDateTime = (note) => {
     return new Date(note.updated).toLocaleDateString();
@@ -33,10 +32,13 @@ function Note({ note }) {
   const onClickSubmit = () => {
     setIsImportantNote(!isImportantNote);
   };
-
   return (
     <div className="notes-list-item">
-      <input type="checkbox" name="completed" checked={}/>
+      <input
+        type="checkbox"
+        name="completed"
+      />
+
       <Link to={`/note/${note.id}`}>
         <div className="note-item">{getTitle(note)}</div>
       </Link>

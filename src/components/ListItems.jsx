@@ -1,10 +1,10 @@
 import Note from "./Notes";
 
-function ListItems({ note }) {
+function ListItems({note, activeNote}) {
   return (
     <div className="card-container">
       {note.map((noteData, index) => (
-        <Note note={noteData} />
+        <Note note={noteData} activeNote={activeNote}/>
       ))}
     </div>
   );
