@@ -18,3 +18,4 @@ const GetAllNotes = () => {
   //         setNotes(data);
   //       };
 };
+
