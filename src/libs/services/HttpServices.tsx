@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { BaseUrl } from "./RoutePath";
 
-class Http {
+class HttpServices {
   instance: AxiosInstance;
   constructor() {
     this.instance = axios.create({
@@ -13,3 +13,7 @@ class Http {
     });
   }
 }
+
+const Http = new HttpServices().instance;
+
+export default Http;
