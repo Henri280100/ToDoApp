@@ -16,7 +16,7 @@ function NoteListPage() {
 
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["/"],
-    queryFn: getAllNotes(10),
+    queryFn: () => getAllNotes(10),
     networkMode: "always",
     staleTime: 60 * 1000,
     cacheTime: 5 * 1000,
