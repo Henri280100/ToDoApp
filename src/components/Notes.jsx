@@ -34,10 +34,10 @@ function Note({ note }) {
   };
   return (
     <div className="notes-list-item">
-      <input
+      {/* <input
         type="checkbox"
         name="completed"
-      />
+      /> */}
 
       <Link to={`/note/${note.id}`}>
         <div className="note-item">{getTitle(note)}</div>
