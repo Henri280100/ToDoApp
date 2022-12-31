@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { QueryClient, useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import ListItems from "../components/ListItems";
 import TopNavigation from "../libs/components/TopNavigation";
@@ -17,9 +17,7 @@ function NoteListPage() {
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["/"],
     queryFn: () => getAllNotes(10),
-    networkMode: "always",
-    staleTime: 60 * 1000,
-    cacheTime: 5 * 1000,
+    staleTime: 5000,
   });
 
 

@@ -8,7 +8,9 @@ export const getAllNotes = (limit: number | string) =>
     params: {
       _limit: limit,
     },
-  });
+  })
+    .then((res) => res.data && res.status)
+    .catch((err) => err.message);
 
 // Update note
 
