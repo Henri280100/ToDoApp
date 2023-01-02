@@ -9,17 +9,25 @@ function NoteListPage() {
   const [searchNote, setSearchNote] = useState("");
   const [debouncedNote, setDebouncedNote] = useState(searchNote);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setSearchNote(debouncedNote), 1000);
-    return () => clearTimeout(timer);
-  });
-
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["/"],
     queryFn: () => getAllNotes(10),
     staleTime: 5000,
   });
 
+  useEffect(() => {
+    const timer = setTimeout(() => setSearchNote(debouncedNote), 1000);
+    return () => clearTimeout(timer);
+  });
+
+  // console.log(
+  //   data?.data.filter((note, index) => {
+  //     if (note.body.includes(searchNote)) {
+
+  //     }
+  //     return true;
+  //   })
+  // );
 
   const clearResult = () => setNotes([]);
 
@@ -79,12 +87,9 @@ function NoteListPage() {
           </div>
         ) : (
           <ListItems
-            note={data?.data.filter((note, index) => {
-              if (searchNote) {
-                return note.body.includes(searchNote);
-              }
-              return true;
-            })}
+            note={data?.data.filter((note, index) =>
+              note.body.includes(searchNote)
+            )}
           />
         )}
         {isError && <span>An error has occurred: {error.message}</span>}
