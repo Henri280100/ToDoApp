@@ -77,7 +77,7 @@ function NoteListPage() {
           </div>
         ) : (
           <>
-            {filterNote?.length > 0 ? (
+            {filterNote.length > 0 ? (
               <ListItems
                 note={data?.data.filter((note, index) =>
                   note.body.includes(searchNote)
