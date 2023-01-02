@@ -1,11 +1,12 @@
-import { QueryClient, useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import ListItems from "../components/ListItems";
 import TopNavigation from "../libs/components/TopNavigation";
 import { getAllNotes } from "../libs/services/LoadApiServices";
+import { GiNotebook } from "react-icons/gi";
+import { IconContext } from "react-icons";
 
 function NoteListPage() {
-  const [notes, setNotes] = useState([]);
   const [searchNote, setSearchNote] = useState("");
   const [debouncedNote, setDebouncedNote] = useState(searchNote);
 
@@ -20,24 +21,13 @@ function NoteListPage() {
     return () => clearTimeout(timer);
   });
 
-  // console.log(
-  //   data?.data.filter((note, index) => {
-  //     if (note.body.includes(searchNote)) {
-
-  //     }
-  //     return true;
-  //   })
-  // );
-
-  const clearResult = () => setNotes([]);
+  const filterNote = data?.data.filter((note, index) =>
+    note.body.toLowerCase().includes(searchNote.toLowerCase())
+  );
 
   return (
     <>
-      <TopNavigation
-        onSearch={setDebouncedNote}
-        clearResult={clearResult}
-        value={debouncedNote}
-      />
+      <TopNavigation onSearch={setDebouncedNote} value={debouncedNote} />
       <div>
         {isLoading ? (
           <div role="status">
@@ -86,11 +76,23 @@ function NoteListPage() {
             <span className="loading-text">Loading...</span>
           </div>
         ) : (
-          <ListItems
-            note={data?.data.filter((note, index) =>
-              note.body.includes(searchNote)
+          <>
+            {filterNote?.length > 0 ? (
+              <ListItems
+                note={data?.data.filter((note, index) =>
+                  note.body.includes(searchNote)
+                )}
+                search={searchNote}
+              />
+            ) : (
+              <IconContext.Provider value={{className: "invalid-note-icon"}}>
+                <GiNotebook/>
+                <span className="invalid-note">
+                  No notes here yet...
+                </span>
+              </IconContext.Provider>
             )}
-          />
+          </>
         )}
         {isError && <span>An error has occurred: {error.message}</span>}
       </div>

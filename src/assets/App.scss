@@ -1,5 +1,4 @@
 :root {
-  --color-main: #f68657;
   --color-text: #383a3f;
   --color-dark: #1f2124;
   --color-black: #000000;
@@ -17,6 +16,7 @@
   --color-bright-cyan: #38ef7d;
   --color-soft-yellow: #fef68a;
   --color-moderate-blue: #54b3d6;
+  --color-orange: #f68657;
   --color-very-dark-desaturated-blue: #33406f;
   --color-red: #ff0000;
   --font-fam: "Lato", sans-serif;
@@ -543,8 +543,19 @@ svg.tea #steamR {
 
 .invalid-note {
   position: absolute;
-  top: 45%;
-  left: 50%;
+  top: 51%;
+  left: 48%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+}
+
+.invalid-note-icon {
+  width: 8%;
+  height: 8%;
+  position: absolute;
+  top: 45%;
+  left: 48%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-orange)
 }
