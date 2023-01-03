@@ -40,28 +40,28 @@ function SidePanel(props) {
     }
   };
 
-  const deleteNote = async () => {
-    fetch(`${BaseUrl}${noteId.id}/delete/`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Hmm it's not work properly!?");
-        }
-        navigate("/");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  // const deleteNote = async () => {
+  //   fetch(`${BaseUrl}${noteId.id}/delete/`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Hmm it's not work properly!?");
+  //       }
+  //       navigate("/");
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
 
-    setConfirmDialog({
-      ...confirmDialog,
-      isOpen: false,
-    });
-  };
+  //   setConfirmDialog({
+  //     ...confirmDialog,
+  //     isOpen: false,
+  //   });
+  // };
 
   return (
     <>

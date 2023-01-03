@@ -26,7 +26,7 @@ function NoteListPage() {
   );
 
   return (
-    <>
+    <div>
       <TopNavigation onSearch={setDebouncedNote} value={debouncedNote} />
       <div>
         {isLoading ? (
@@ -76,7 +76,7 @@ function NoteListPage() {
             <span className="loading-text">Loading...</span>
           </div>
         ) : (
-          <>
+          <div>
             {filterNote.length > 0 ? (
               <ListItems
                 note={data?.data.filter((note, index) =>
@@ -92,11 +92,11 @@ function NoteListPage() {
                 </span>
               </IconContext.Provider>
             )}
-          </>
+          </div>
         )}
         {isError && <span>An error has occurred: {error.message}</span>}
       </div>
-    </>
+    </div>
   );
 }
 

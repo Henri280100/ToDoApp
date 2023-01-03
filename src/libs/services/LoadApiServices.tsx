@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Notes } from "../../models/notes.model";
+import { useDebounce } from "../Performance/useDebounce";
 import Http from "./HttpServices";
 
 // Get all notes
@@ -8,7 +9,12 @@ export const getAllNotes = (limit: number | string) =>
     params: {
       _limit: limit,
     },
-  }).catch((err) => err.message);
+    validateStatus: (status: number) => {
+      return status < 500;
+    },
+  });
+
+// Get a note
 
 // Update note
 
